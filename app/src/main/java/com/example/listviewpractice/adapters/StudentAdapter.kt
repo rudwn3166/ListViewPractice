@@ -32,8 +32,14 @@ class StudentAdapter(val mContext : Context,
         val genderTxt = row.findViewById<TextView>(R.id.genderTxt)
 
         nameTxt.text = studentData.name
+
+
+//   출생년도를 가지고 ->(2021년도 한국식)나이로 변환해서 보여주기
+
+    val koreanAge = 2021 -studentData.birthYear +1
+
 //        스트링 가공 법 ${변수사용 가능}
-        birthYearTxt.text = "(${studentData.birthYear}년생)"
+        birthYearTxt.text = "(${koreanAge}세)"
         genderTxt.text = studentData.gender
 
         return row
