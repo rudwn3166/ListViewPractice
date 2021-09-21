@@ -36,8 +36,18 @@ class MainActivity : AppCompatActivity() {
             val clickedStudent = mStudentList[position]
             Toast.makeText(this, "${clickedStudent.name}이 눌림", Toast.LENGTH_SHORT).show()
             
-            
-            
+        }
+
+//        롱클릭 리스너는 리턴값을 줘야함
+        studentListView.setOnItemLongClickListener { adapterView, view, position, id ->
+
+            val longClickedStudent = mStudentList[position]
+
+            Toast.makeText(this, "${longClickedStudent.name}길게 클릭됨", Toast.LENGTH_SHORT).show()
+
+//            내가 true라고 하면 롱클릭 전용으로 생각하고
+//            false라고 하면 롱클릭뿐아니라 일반 클릭도 사용한 것처럼 보이게 됨
+            return@setOnItemLongClickListener true
         }
 
     }
