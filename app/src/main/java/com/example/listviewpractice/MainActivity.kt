@@ -41,12 +41,14 @@ class MainActivity : AppCompatActivity() {
 //        롱클릭 리스너는 리턴값을 줘야함
         studentListView.setOnItemLongClickListener { adapterView, view, position, id ->
 
-            val longClickedStudent = mStudentList[position]
-
-            Toast.makeText(this, "${longClickedStudent.name}길게 클릭됨", Toast.LENGTH_SHORT).show()
-
+//            리스트뷰의 눌린 것을 지워 줘라,이것만 누르면 실제 뷰에서는 지워지지 않음
+            mStudentList.removeAt(position)
 //            내가 true라고 하면 롱클릭 전용으로 생각하고
 //            false라고 하면 롱클릭뿐아니라 일반 클릭도 사용한 것처럼 보이게 됨
+            mAdapter.notifyDataSetChanged()
+//            위 함수를 작성해야 삭제가 됨 .어댑터한테 리스트뷰가 변경 된 항목을 알려주는 함수
+
+
             return@setOnItemLongClickListener true
         }
 
