@@ -9,15 +9,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+//    어레이리스트에 내가 datas에 작성한 학생 목록 클래스를 넣어줌
     val mStudentList = ArrayList<Student>()
 
-//    나중에 채워넣는 변수
+//    나중에 채워넣는 변수,mAdapter가 Student클래스가 가진 StudentAdapter를 상속받는다
     lateinit var mAdapter : StudentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        우리가 보여줄 리스트 뷰에 내용을 add로 추가 해줌
         mStudentList.add(Student("오경주",1995,"여성"))
         mStudentList.add(Student("김말수",1989,"남자"))
         mStudentList.add(Student("라용니",7818,"여성"))
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(Student("오나",1597,"성별모름"))
         mStudentList.add(Student("라벨라",1234,"남자"))
 
+//       리스트 뷰에 내용을 보여주기 위해서 위에서 멤버변수로 선언한 mAdapter에 StudentAdapter와 연결후
+//        실제 보여줄 내용을 작성함
 //어떤화면에서 어떤 레이아웃의 모양으로 ,어떤 목록에 들어있는 걸 반영하는지
       mAdapter = StudentAdapter(this,R.layout.student_list_item,mStudentList)
       studentListView.adapter = mAdapter
