@@ -2,6 +2,7 @@ package com.example.listviewpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.listviewpractice.adapters.StudentAdapter
 import com.example.listviewpractice.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,8 +28,17 @@ class MainActivity : AppCompatActivity() {
 
 //어떤화면에서 어떤 레이아웃의 모양으로 ,어떤 목록에 들어있는 걸 반영하는지
       mAdapter = StudentAdapter(this,R.layout.student_list_item,mStudentList)
-
       studentListView.adapter = mAdapter
+        
+//        리스트 뷰가 눌렸을 때 할 이벤트 작성
+        studentListView.setOnItemClickListener { adapterView, view, position,id ->
+            
+            val clickedStudent = mStudentList[position]
+            Toast.makeText(this, "${clickedStudent.name}이 눌림", Toast.LENGTH_SHORT).show()
+            
+            
+            
+        }
 
     }
 }
